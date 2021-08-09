@@ -2,7 +2,7 @@ import React from 'react'
 import {AppBar,Toolbar,IconButton,badge,MenuItem,Menu,Typography, Badge} from '@material-ui/core'
 import {ShoppingCart} from '@material-ui/icons'
 import useStyles from '../Products/styles'
-function Navbar() {
+function Navbar({cartLength}) {
     const classes = useStyles() ;
     return (
         <div>
@@ -15,7 +15,7 @@ function Navbar() {
                    <div className={classes.grow}>
                        <div className={classes.button}>
                            <IconButton aria-label="Show Cart Items" color="inherit">
-                                <Badge badgeContent={2} color="secondary">
+                                <Badge badgeContent={cartLength} color="secondary">
                                     <ShoppingCart/>
                                 </Badge>
                            </IconButton>
