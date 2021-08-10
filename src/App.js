@@ -5,6 +5,7 @@ import {commerce} from './Commerce/Commerce'
 import { useEffect, useState } from 'react';
 import productor from '../src/Components/Products/util'
 import Cart from './Components/Cart/Cart'
+import Checkout from './Components/Checkout/Checkout';
 import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
 function App() {
   const [products,setProducts] = useState([]); // using this for fetching products list from commerce API
@@ -74,6 +75,9 @@ function App() {
         handleUpdateQty={handleUpdateQty} 
         handleRemoveQty={handleRemoveQty} 
         handleemptyCart={handleemptyCart}/>
+        </Route>
+        <Route exact path="/checkout">
+          <Checkout/>
         </Route>
       </Switch>
     </div>

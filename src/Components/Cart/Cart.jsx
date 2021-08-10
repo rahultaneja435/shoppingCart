@@ -12,7 +12,7 @@ function Cart({cartData,cartData1,handleUpdateQty,handleRemoveQty,handleemptyCar
         <Container>
             <div className={classes.ToolBar}/>
             <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
-            { cartData? (<div>
+            { cartData.length > 0? (<div>
                 <Grid container spacing={3}>
                     {cartData.map((element)=>(
                     <Grid element xs={12} sm={4} key={element.id}>
@@ -24,12 +24,11 @@ function Cart({cartData,cartData1,handleUpdateQty,handleRemoveQty,handleemptyCar
                         <Typography variant="h4">Subtotal:{cartData1?.subtotal?.formatted_with_symbol}</Typography>
                         <div>
                             <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleemptyCart}>Empty Cart</Button>
-                            <Button className={classes.checkoutButton} size="large" type="button" variant="contained"color="secondary">Checkout</Button>
+                            <Button  component={Link} to="/checkout"className={classes.checkoutButton} size="large" type="button" variant="contained"color="secondary">Checkout</Button>
                         </div>
                 </div>
             </div>): 
-            ( <Typography variant="subtitle1">You have no items in your Cart
-               <Link to="/"> start adding it</Link>
+            ( <Typography variant="subtitle1">You have no items in your Cart  <Link to="/"> start adding it</Link>
             </Typography>)}
         </Container>
     )
