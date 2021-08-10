@@ -24,7 +24,7 @@ function Cart({cartData,cartData1,handleUpdateQty,handleRemoveQty,handleemptyCar
                         <Typography variant="h4">Subtotal:{cartData1?.subtotal?.formatted_with_symbol}</Typography>
                         <div>
                             <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleemptyCart}>Empty Cart</Button>
-                            <Button  component={Link} to="/checkout"className={classes.checkoutButton} size="large" type="button" variant="contained"color="secondary">Checkout</Button>
+                            <Button  component={Link} to="/checkout"className={classes.checkoutButton} size="large" type="button" variant="contained"color="primary">Checkout</Button>
                         </div>
                 </div>
             </div>): 
