@@ -38,13 +38,15 @@ function App() {
   const handleCart = async (productId,quantity)=>
   {
     const resp = await commerce.cart.add(productId,quantity)
-    setCart(resp)
+    setCart(resp.cart)
   }
+  console.log(cart.line_items);
+
   return (
     <div className="App">
       <Products productData={products} onAddCart={handleCart} />
       <Navbar cartLength={cart.total_items}/>
-      {/* <Cart cart={cart}/> */}
+      <Cart cartData={cart.line_items}/>
     </div>
   );
 }
