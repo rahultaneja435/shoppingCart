@@ -14,7 +14,6 @@ function App() {
   const [carter,setCarter] = useState([]);
   const productFetcher = async()=>
   {
-    
     const result  = await commerce.products.list(); //promise will be received
     console.log(result);
     setProducts(Object.entries(result.data));
@@ -77,7 +76,7 @@ function App() {
         handleemptyCart={handleemptyCart}/>
         </Route>
         <Route exact path="/checkout">
-          <Checkout/>
+          <Checkout cart={cart}/>
         </Route>
       </Switch>
     </div>
