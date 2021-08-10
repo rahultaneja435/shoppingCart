@@ -1,25 +1,36 @@
 import React, { useState } from 'react'
 import {Container,Grid,Typography,Button} from '@material-ui/core'
-import useStyles from '../Products/ProductStyle'
+import useStyles from './styles'
+import Cartitem from './CartItems/Cartitem'
+import { Link } from 'react-router-dom'
 
 
-function Cart({cartData}) {
+function Cart({cartData,cartData1,handleUpdateQty,handleRemoveQty,handleemptyCart}) {
     const classes = useStyles()
     console.log(cartData);
     return (
         <Container>
             <div className={classes.ToolBar}/>
-            <Typography className={classes.title} variant="h3">Your Shopping Cart</Typography>
+            <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
             { cartData? (<div>
                 <Grid container spacing={3}>
                     {cartData.map((element)=>(
                     <Grid element xs={12} sm={4} key={element.id}>
-                        <div>{element?.name}</div>
+                        <Cartitem item={element} onUpdateQuantity={handleUpdateQty} onRemoveQuantity={handleRemoveQty}/>
                     </Grid>
                     ))}
                 </Grid>
+                <div className={classes.cardDetails}>
+                        <Typography variant="h4">Subtotal:{cartData1?.subtotal?.formatted_with_symbol}</Typography>
+                        <div>
+                            <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleemptyCart}>Empty Cart</Button>
+                            <Button className={classes.checkoutButton} size="large" type="button" variant="contained"color="secondary">Checkout</Button>
+                        </div>
+                </div>
             </div>): 
-            ( <Typography variant="subtitle1">You have no items in your Cart, start adding it</Typography>)}
+            ( <Typography variant="subtitle1">You have no items in your Cart
+               <Link to="/"> start adding it</Link>
+            </Typography>)}
         </Container>
     )
 }

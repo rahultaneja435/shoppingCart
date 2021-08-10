@@ -14,7 +14,7 @@ function Product({product, onAddCart}) {
                         <Typography varient="h5" gutterBottom>{product[1]?.name}</Typography>
                         <Typography varient="h5">{product[1]?.price?.formatted_with_code}</Typography>
                     </div>
-                    <Typography variant="body2" color="textSecondary">{product[1]?.description}</Typography>
+                    <Typography dangerouslySetInnerHTML={{ __html: product[1]?.description}} variant="body2" color="textSecondary" component="p" />
                 </CardContent>
                 <CardActions disableSpacing className={classes.CardActions}></CardActions>
                  <IconButton aria-label="Add to Cart" onClick={()=>onAddCart(product[1].id,1)}>
